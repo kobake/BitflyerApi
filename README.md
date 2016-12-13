@@ -7,6 +7,12 @@
 - https://bitflyer.jp/ … 仮想通貨(ビットコイン等)取引所のひとつです。
 - https://lightning.bitflyer.jp/docs?lang=ja … 公式に公開されている API 仕様です。当パッケージはこの API アクセスをラップしています。（全APIではなく主要と判断したAPIのみラップしています）
 
+## サンプルプロジェクト
+当リポジトリの [BitflyerApiSample プロジェクト](https://github.com/kobake/BitflyerApi/blob/master/BitflyerApiSample/Program.cs) で BitflyerApi の実行サンプルコードをいくつか載せています。
+
+API Key, API Secret は ```xxxxxxxxxxxxx``` というように伏せてあるので各自適切なキー値に差し替えて実行してみてください。
+注文コードは実行されるとマズいことがあるのでコメントアウトしてあります。
+
 ## Install
 当パッケージは Microsoft の [NuGet Gallery](https://www.nuget.org/packages/BitflyerApi) に登録されています。
 Visual Studio の Package Manager Console にて以下を実行すればパッケージが導入されます。
