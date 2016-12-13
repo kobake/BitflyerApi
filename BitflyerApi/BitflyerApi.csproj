@@ -50,6 +50,7 @@
     <Compile Include="BitflyerClient.cs" />
     <Compile Include="Board.cs" />
     <Compile Include="Order.cs" />
+    <Compile Include="Position.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

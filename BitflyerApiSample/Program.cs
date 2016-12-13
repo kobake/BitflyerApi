@@ -19,7 +19,7 @@ namespace BitflyerApiSample
             client = new BitflyerClient(
                 "xxxxxxxxxxxxx",
                 "xxxxxxxxxxxxx",
-                BitflyerProductCode.BTC_JPY
+                ProductCode.FX_BTC_JPY
             );
 
             Task.Run(async () =>
@@ -65,6 +65,16 @@ namespace BitflyerApiSample
             // 証拠金情報
             var collateral = await client.GetMyCollateral();
             Console.WriteLine(collateral);
+
+            // 建玉情報
+            Console.WriteLine("----positions----");
+            var positions = await client.GetMyPositions();
+            foreach(var p in positions)
+            {
+                Console.WriteLine(p);
+            }
+            Console.WriteLine("----/positions----");
+
 
             Console.WriteLine("");
         }
