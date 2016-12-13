@@ -75,7 +75,7 @@ namespace BitflyerApi
         }
 
         public double CollateralAmount { get; set; } // 預け入れた日本円証拠金の額(円)
-        public double OpenPositionProfitAndLoss { get; set; } // 建玉の評価損益(円)
+        public double OpenPositionProfitAndLoss { get; set; } // 建玉の評価損益合計(円)
         public double RequiredCollateral { get; set; }// 現在の必要証拠金(円)
         public double KeepRate { get; set; }// 現在の証拠金維持率
 

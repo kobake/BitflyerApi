@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace BitflyerApi
 {
-    public enum BitflyerProductCode
+    public enum ProductCode
     {
         BTC_JPY,
         FX_BTC_JPY,
@@ -22,9 +22,9 @@ namespace BitflyerApi
     public class BitflyerClient
     {
         ApiClient m_apiClient;
-        BitflyerProductCode PRODUCT_CODE;
+        ProductCode PRODUCT_CODE;
 
-        public BitflyerClient(string apiKey, string apiSecret, BitflyerProductCode productCode)
+        public BitflyerClient(string apiKey, string apiSecret, ProductCode productCode)
         {
             m_apiClient = new ApiClient(apiKey, apiSecret);
             PRODUCT_CODE = productCode;
@@ -104,6 +104,27 @@ namespace BitflyerApi
                 throw new Exception("OrderError: " + ex.Message);
             }
         }
+
+        // -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- //
+        // 建玉情報の取得
+        // -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- //
+        public async Task<List<Position>> GetMyPositions()
+        {
+            // リクエスト送信
+            string json = await m_apiClient.Get("/v1/me/getpositions?product_code=" + PRODUCT_CODE.ToString());
+
+            // 応答パース
+            try
+            {
+                List<RawPosition> _positions = JsonConvert.DeserializeObject<List<RawPosition>>(json);
+                return _positions.Select(p => new Position(p)).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("GetBoardError: " + ex.Message);
+            }
+        }
+
 
         // -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- //
         // 注文取り消し
