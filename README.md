@@ -62,6 +62,15 @@ static async Task ShowAssetInfo()
     // 証拠金情報
     var collateral = await client.GetMyCollateral();
     Console.WriteLine(collateral); // 諸情報
+    
+    // 建玉情報
+    Console.WriteLine("----positions----");
+    var positions = await client.GetMyPositions();
+    foreach(var p in positions)
+    {
+        Console.WriteLine(p);
+    }
+    Console.WriteLine("----/positions----");
 }
 ```
 
