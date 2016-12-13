@@ -107,15 +107,7 @@ namespace BitflyerApiSample
             var orders = await client.GetMyActiveOrders();
             foreach(var order in orders)
             {
-                try
-                {
-                    Console.WriteLine(order.ToString());
-
-                }
-                catch(Exception ex)
-                {
-                    Console.WriteLine("Error: " + ex.Message);
-                }
+                Console.WriteLine(order.ToString());
             }
             Console.WriteLine("");
         }
