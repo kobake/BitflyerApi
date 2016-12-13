@@ -27,30 +27,43 @@ namespace BitflyerApiSample
                 try
                 {
                     // 資産情報を取得・表示
-                    var assetList = await client.GetMyAssetList();
-                    Console.WriteLine(assetList);
-
-                    // 証拠金情報
-                    var collateral = await client.GetMyCollateral();
-                    Console.WriteLine(collateral);
+                    await ShowAssetInfo();
 
                     // 現在の板情報を取得・表示
-                    await ShowBoard();
+                    //await ShowBoard();
 
                     // 自分の注文情報を取得・表示
-                    await ShowMyActiveOrders();
+                    //await ShowMyActiveOrders();
 
                     // 実際の注文
                     // await SendSomeOrders();
 
                     // 注文の取り消し
-                    await client.CancelAllOrders();
+                    //await client.CancelAllOrders();
                 }
                 catch(Exception ex)
                 {
                     Console.WriteLine("AnyError: " + ex.Message);
                 }
             }).Wait();
+        }
+
+        static async Task ShowAssetInfo()
+        {
+            Console.WriteLine("");
+            Console.WriteLine("========================================");
+            Console.WriteLine("asset");
+            Console.WriteLine("========================================");
+            
+            // 資産情報を取得・表示
+            var assetList = await client.GetMyAssetList();
+            Console.WriteLine(assetList);
+
+            // 証拠金情報
+            var collateral = await client.GetMyCollateral();
+            Console.WriteLine(collateral);
+
+            Console.WriteLine("");
         }
 
         // 実際の注文
