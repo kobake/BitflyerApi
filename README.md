@@ -32,7 +32,7 @@ using BitflyerApi;
 client = new BitflyerClient(
     "xxxxxxxxxxxxx", // API Key を指定
     "xxxxxxxxxxxxx", // API Secret を指定
-    BitflyerProductCode.BTC_JPY // 取引の種類を指定。BTC_JPY, FX_BTC_JPY, ETH_BTC のいずれか。
+    ProductCode.FX_BTC_JPY // 取引の種類を指定。BTC_JPY, FX_BTC_JPY, ETH_BTC のいずれか。
 );
 ```
 
