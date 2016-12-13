@@ -58,6 +58,9 @@ namespace BitflyerApiSample
             // 資産情報を取得・表示
             var assetList = await client.GetMyAssetList();
             Console.WriteLine(assetList);
+            Console.WriteLine("JPY = " + assetList.Jpy.Amount);
+            Console.WriteLine("JPY(Available) = " + assetList.Jpy.Available);
+            Console.WriteLine("BTC = " + assetList.Btc.Amount);
 
             // 証拠金情報
             var collateral = await client.GetMyCollateral();
