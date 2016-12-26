@@ -133,7 +133,6 @@ static async Task CancelAllOrders()
 
 ### 注文の個別取り消し
 ```
-
 static async Task CancelOneOrder()
 {
     var orders = await client.GetMyActiveOrders();
@@ -142,5 +141,4 @@ static async Task CancelOneOrder()
         await client.CancelOrder(orders[0]);
     }
 }
-
 ```
