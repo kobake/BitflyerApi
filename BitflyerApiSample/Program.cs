@@ -27,13 +27,16 @@ namespace BitflyerApiSample
                 try
                 {
                     // 資産情報を取得・表示
-                    await ShowAssetInfo();
+                    // await ShowAssetInfo();
 
                     // 現在の板情報を取得・表示
                     //await ShowBoard();
 
                     // 自分の注文情報を取得・表示
-                    //await ShowMyActiveOrders();
+                    // await ShowMyActiveOrders();
+
+                    // 自分の注文を1個だけキャンセル
+                    await CancelOneOrder();
 
                     // 実際の注文
                     // await SendSomeOrders();
@@ -41,7 +44,7 @@ namespace BitflyerApiSample
                     // 注文の取り消し
                     //await client.CancelAllOrders();
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     Console.WriteLine("AnyError: " + ex.Message);
                 }
@@ -136,6 +139,34 @@ namespace BitflyerApiSample
                 Console.WriteLine(order.ToString());
             }
             Console.WriteLine("");
+        }
+
+
+        static async Task CancelOneOrder()
+        {
+            Console.WriteLine("");
+            Console.WriteLine("========================================");
+            Console.WriteLine("my orders (for cancel)");
+            Console.WriteLine("========================================");
+            var orders = await client.GetMyActiveOrders();
+            foreach (var order in orders)
+            {
+                Console.WriteLine(order.ToString());
+            }
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine("========================================");
+            Console.WriteLine("cancel one order");
+            Console.WriteLine("========================================");
+            if(orders.Count > 0)
+            {
+                await client.CancelOrder(orders[0]);
+                Console.WriteLine("one order cancel done");
+            }
+            else
+            {
+                Console.WriteLine("no order to cancel");
+            }
         }
 
     }
