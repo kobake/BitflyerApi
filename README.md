@@ -1,4 +1,4 @@
-# BitflyerApi
+# BitflyerApi 0.8.3
 [bitFlyer](https://bitflyer.jp/) の API を扱うための NuGet パッケージです。
 
 このパッケージは kobake が個人的に作ったものであり、bitFlyer 公式パッケージではありません。
