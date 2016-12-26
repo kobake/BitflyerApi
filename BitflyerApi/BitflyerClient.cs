@@ -24,9 +24,14 @@ namespace BitflyerApi
         ApiClient m_apiClient;
         ProductCode PRODUCT_CODE;
 
-        public BitflyerClient(string apiKey, string apiSecret, ProductCode productCode)
+        public BitflyerClient(
+            string apiKey, // API KEY
+            string apiSecret, // API SECRET
+            ProductCode productCode, // 取引種別
+            double timeoutSec = 4 // タイムアウト (デフォルト4秒)
+        )
         {
-            m_apiClient = new ApiClient(apiKey, apiSecret);
+            m_apiClient = new ApiClient(apiKey, apiSecret, timeoutSec);
             PRODUCT_CODE = productCode;
         }
 
@@ -129,6 +134,7 @@ namespace BitflyerApi
         // -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- //
         // 注文取り消し
         // -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- //
+        // 全キャンセル
         public async Task CancelAllOrders()
         {
             // リクエスト構築
@@ -140,6 +146,21 @@ namespace BitflyerApi
 
             // リクエスト送信
             await m_apiClient.Post("/v1/me/cancelallchildorders", body);
+        }
+
+        // 個別キャンセル
+        public async Task CancelOrder(Order order)
+        {
+            // リクエスト構築
+            var reqobj = new
+            {
+                product_code = PRODUCT_CODE.ToString(), // BTC_JPY, FX_BTC_JPY
+                child_order_id = order.ChildOrderId
+            };
+            string body = JsonConvert.SerializeObject(reqobj);
+
+            // リクエスト送信
+            await m_apiClient.Post("/v1/me/cancelchildorder", body);
         }
 
         // -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- //
