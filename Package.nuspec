@@ -3,7 +3,7 @@
   <metadata>
     <id>BitflyerApi</id>
     <title>BitflyerApi</title>
-    <version>0.8.2</version>
+    <version>0.8.3</version>
     <authors>kobake</authors>
     <owners>kobake</owners>
     <licenseUrl>https://github.com/kobake/BitflyerApi/blob/master/LICENSE</licenseUrl>
@@ -12,7 +12,10 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>bitFlyer API informal wrapper library</description>
     <summary>bitFlyer API informal wrapper library</summary>
-    <releaseNotes>Feature for getting positions information</releaseNotes>
+    <releaseNotes>
+        Feature for canceling single order
+        Feature for setting http timeout
+    </releaseNotes>
     <copyright>Copyright 2016 kobake</copyright>
     <tags>bitFlyer API Exchange FX Bitcoin BTC Ethereum ETH</tags>
     <dependencies>
