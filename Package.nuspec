@@ -13,8 +13,8 @@
     <description>bitFlyer API informal wrapper library</description>
     <summary>bitFlyer API informal wrapper library</summary>
     <releaseNotes>
-        Feature for canceling single order
-        Feature for setting http timeout
+Feature for canceling single order
+Feature for setting http timeout
     </releaseNotes>
     <copyright>Copyright 2016 kobake</copyright>
     <tags>bitFlyer API Exchange FX Bitcoin BTC Ethereum ETH</tags>
