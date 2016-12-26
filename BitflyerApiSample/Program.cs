@@ -19,7 +19,8 @@ namespace BitflyerApiSample
             client = new BitflyerClient(
                 "xxxxxxxxxxxxx",
                 "xxxxxxxxxxxxx",
-                ProductCode.FX_BTC_JPY
+                ProductCode.FX_BTC_JPY,
+                timeoutSec: 6
             );
 
             Task.Run(async () =>
