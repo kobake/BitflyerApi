@@ -123,7 +123,7 @@ static async Task ShowMyActiveOrders()
 ```
 
 ### 注文の全取り消し
-```
+```cs
 static async Task CancelAllOrders()
 {
     // 全注文の取り消し
@@ -132,7 +132,7 @@ static async Task CancelAllOrders()
 ```
 
 ### 注文の個別取り消し
-```
+```cs
 static async Task CancelOneOrder()
 {
     var orders = await client.GetMyActiveOrders();
