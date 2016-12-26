@@ -1,7 +1,10 @@
 # BitflyerApi 0.8.3
-[bitFlyer](https://bitflyer.jp/) の API を扱うための NuGet パッケージです。
+bitFlyer の API を扱うための NuGet パッケージです。
 
 このパッケージは kobake が個人的に作ったものであり、bitFlyer 公式パッケージではありません。
+
+- bitFlyer … https://bitflyer.jp/
+- NuGet … https://www.nuget.org/packages/BitflyerApi
 
 ## bitFlyer について
 - https://bitflyer.jp/ … 仮想通貨(ビットコイン等)取引所のひとつです。
