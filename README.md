@@ -121,14 +121,25 @@ static async Task ShowMyActiveOrders()
 }
 ```
 
-### 注文の取り消し
+### 注文の全取り消し
 ```
-static async Task ShowMyActiveOrders()
+static async Task CancelAllOrders()
 {
     // 全注文の取り消し
     await client.CancelAllOrders();
 }
 ```
 
-※個別注文の取り消し機能は今のところ（このライブラリでは）提供していません。
-そのうち追加すると思いますが個人的にあまり使わないので優先度低めです。
+### 注文の個別取り消し
+```
+
+static async Task CancelOneOrder()
+{
+    var orders = await client.GetMyActiveOrders();
+    if (orders.Count > 0)
+    {
+        await client.CancelOrder(orders[0]);
+    }
+}
+
+```
