@@ -24,9 +24,14 @@ namespace BitflyerApi
         ApiClient m_apiClient;
         ProductCode PRODUCT_CODE;
 
-        public BitflyerClient(string apiKey, string apiSecret, ProductCode productCode)
+        public BitflyerClient(
+            string apiKey, // API KEY
+            string apiSecret, // API SECRET
+            ProductCode productCode, // 取引種別
+            double timeoutSec = 4 // タイムアウト (デフォルト4秒)
+        )
         {
-            m_apiClient = new ApiClient(apiKey, apiSecret);
+            m_apiClient = new ApiClient(apiKey, apiSecret, timeoutSec);
             PRODUCT_CODE = productCode;
         }
 

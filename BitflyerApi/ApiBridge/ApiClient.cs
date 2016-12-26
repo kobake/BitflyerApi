@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace BitflyerApi.ApiBridge
@@ -12,11 +13,13 @@ namespace BitflyerApi.ApiBridge
     {
         string API_SECRET;
         string API_KEY;
+        double m_timeoutSec;
 
-        public ApiClient(string apiKey, string apiSecret)
+        public ApiClient(string apiKey, string apiSecret, double timeoutSec)
         {
             API_KEY = apiKey;
             API_SECRET = apiSecret;
+            m_timeoutSec = timeoutSec;
         }
 
         public async Task<string> Get(string path)
@@ -49,7 +52,7 @@ namespace BitflyerApi.ApiBridge
 
             // リクエスト送信
             HttpClient client = new HttpClient();
-            client.Timeout = TimeSpan.FromSeconds(2); // タイムアウトは仮で2秒にしておく
+            client.Timeout = TimeSpan.FromSeconds(m_timeoutSec); // タイムアウト
             var content = new StringContent(body, System.Text.Encoding.UTF8, "application/json");
             client.DefaultRequestHeaders.Add("ACCESS-KEY", API_KEY);
             client.DefaultRequestHeaders.Add("ACCESS-TIMESTAMP", timestamp);
@@ -57,13 +60,20 @@ namespace BitflyerApi.ApiBridge
 
             // リクエスト送信
             HttpResponseMessage response;
-            if (httpMethod == "POST")
+            try
             {
-                response = await client.PostAsync("https://api.bitflyer.jp" + path, content);
+                if (httpMethod == "POST")
+                {
+                    response = await client.PostAsync("https://api.bitflyer.jp" + path, content);
+                }
+                else
+                {
+                    response = await client.GetAsync("https://api.bitflyer.jp" + path);
+                }
             }
-            else
+            catch (TaskCanceledException)
             {
-                response = await client.GetAsync("https://api.bitflyer.jp" + path);
+                throw new Exception("API TIMEOUT: " + path);
             }
 
             // 応答受け取り
