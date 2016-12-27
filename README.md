@@ -6,6 +6,9 @@ bitFlyer の API を扱うための NuGet パッケージです。
 - bitFlyer … https://bitflyer.jp/
 - NuGet … https://www.nuget.org/packages/BitflyerApi
 
+## 注記：タイムアウト値の適切な設定について
+``new BitflyerClient`` 時に ``timeoutSec`` 引数でタイムアウト秒数を設定できますが、この値は省略すると 4 秒に設定されます。最近 (2016/12/27) 試した感じの所感としては、たぶん時間帯にもよりますが、タイムアウト値を 6 秒くらいにしてもタイムアウトすることがあったりしたので、ここは 10 秒くらいにしておくのが適切なのかもしれません。各自調節してください。取引所の賑わい具合によっても応答時間は変わってくると思います。
+
 ## bitFlyer について
 - https://bitflyer.jp/ … 仮想通貨(ビットコイン等)取引所のひとつです。
 - https://lightning.bitflyer.jp/docs?lang=ja … 公式に公開されている API 仕様です。当パッケージはこの API アクセスをラップしています。（全APIではなく主要と判断したAPIのみラップしています）
